@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tarjeta {
+  justify-content: center;
+  align-content: center;
+  border: solid 2px;
+  border-color: black;
+  margin: 0.5rem;
+  background-color: #c2bbbb78;
+}
+
+.contenedor-cards{
+  display: flex;
+  flex-direction: row;
+  background-color: #1f0c7efa;
+}
