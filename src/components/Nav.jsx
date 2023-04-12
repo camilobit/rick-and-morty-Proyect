@@ -7,15 +7,17 @@ import { NavLink } from "react-router-dom";
 
         return (
             <nav class="nav">
-            <Logo/>
-            <button>
-                <NavLink to='/home'>HOME</NavLink>
+            {/* <Logo/> */}
+            <button class ="btn-nav">
+                <NavLink id="btn-nav-link" to='/home'>HOME</NavLink>
+            </button>
+            <button class="btn-nav">
+                <NavLink id="btn-nav-link" to='/about'>ABOUT</NavLink>
+            </button>
+            <button class="btn-nav">
+                <NavLink id="btn-nav-link" to='/favorites'>Favorites</NavLink>
             </button>
             <SearchBar onSearch={onSearch}/>
-            <button>
-                <NavLink to='/about'>ABOUT</NavLink>
-            </button>
-            
             
         </nav>  
     )

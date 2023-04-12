@@ -3,6 +3,7 @@ import Cards from './components/Cards.jsx';
 import Nav from './components/Nav';
 import About from './components/About';
 import Detail from './components/Detail';
+import Favorites from './components/Favorites'
 import { useState } from 'react';
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
@@ -36,6 +37,8 @@ function App() {
             <Route path='/home' element={<Cards characters={characters} onClose={onClose}/>} />
 
             <Route path='/about' element={<About/>} />
+
+            <Route path='/favorites' element={<Favorites/>} />
 
             <Route path='/detail/:id' element={<Detail/>} />
 

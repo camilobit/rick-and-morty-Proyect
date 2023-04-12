@@ -63,3 +63,14 @@ code {
   font-size: x-large;
   font-family: 'Lucida Sans';
 }
+.btn-nav{
+  background-color: #0d4ff5;
+  border-radius: 0.5rem;
+  width: 5rem;
+  color: white;
+}
+#btn-nav-link {
+  color: white;
+  text-decoration: none;
+  font-family: Verdana;
+}
