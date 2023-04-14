@@ -1,32 +1,72 @@
-import { ADD_FAV, REMOVE_FAV } from "./actions"
+import { ADD_FAV, REMOVE_FAV, ORDER, FILTER, TOGGLE_FAVORITE } from "./action-types"
 
 
 const initialState = {
-    myFavorites: []
+    myFavorites: [],
+    allCharacters: []
 }
 
 
-const reducer = (state = initialState, action) => {
-    //const numberid = Number(id);
+const reducer = (state = initialState, {type, payload}) => {
+    
 
-    switch(action.type){
+    switch( type ){
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: state.myFavorites.push(state.character)
+                myFavorites: [...state.allCharacters,payload],
+                allCharacters: [...state.allCharacters, payload]
             }
         
         case REMOVE_FAV:
             return {
                 ...state,
-                //myFavorites: state.myFavorites.filter(id => (math.floor(id)) !== {id})
-                //myFavorites: state.myFavorites.filter.Number(id)(id => id !== {id})
-                myFavorites: state.myFavorites.filter(id => id != {id})
+                myFavorites: state.myFavorites.filter(fav => fav.id !== payload)
 
             }
-        
-        default:
-            return { ...state }
+
+        case FILTER:
+            const allCharactersFiltered = state.allCharacters.filter(character => character.gender === payload)
+            
+            return {
+                ...state,
+                myFavorites: 
+                    payload === 'allCharacters'
+                    ? [...state.allCharacters]
+                    : allCharactersFiltered
+            }
+
+            case ORDER:
+                const allCharactersFavCopy = [...state.allCharacters]
+                return {
+                    ...state,
+                    myFavorites:
+                        payload === 'A'
+                        ? allCharactersFavCopy.sort((a, b) => a.id - b.id)
+                        : allCharactersFavCopy.sort((a, b) => b.id - a.id)
+                }
+
+                case TOGGLE_FAVORITE:
+                    const isFavorite = state.myFavorites.some(fav => fav.id === payload);
+                    if (isFavorite) {
+                        return {
+                            ...state,
+                            myFavorites: state.myFavorites.filter(fav => fav.id !== payload)
+                        }
+                    } else {
+                        const character = state.allCharacters.find(char => char.id === payload);
+                        if (character) {
+                            return {
+                                ...state,
+                                myFavorites: [...state.myFavorites, character]
+                            }
+                        } else {
+                            return state;
+                        }
+                    }
+    
+            default:
+                return { ...state }
     }
 }                                                                           
 
