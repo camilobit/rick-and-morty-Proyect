@@ -54,6 +54,7 @@ const Favorites = ({ myFavorites }) => {
                             id={fav.id}
                             name={fav.name}
                             image={fav.image}
+                            showActions={false}
                         />
                         </div>
                     )

@@ -28,6 +28,7 @@ export default function Cards({ characters, onClose }) {
                      image={image}
                      origin={origin.name}
                      onClose={onClose}
+                     showActions={true}
                   />
                )
             })

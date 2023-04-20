@@ -3,7 +3,7 @@ import { addFav, removeFav } from "../../redux/actions";
 import { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 
-function Card({ name, species, gender, origin, status, image, id, onClose, addFav, removeFav, myFavorites }) {
+function Card({ name, species, gender, origin, status, image, id, onClose, addFav, removeFav, myFavorites, showActions }) {
 
 const [ isFav, setIsFav] = useState(false);
 
@@ -27,30 +27,54 @@ useEffect(() => {
 
    return (
    <div class="tarjeta">
-         {/* <button onClick={handleFavorite}>{isFav ? '❤️':'🤍'}</button>
-         
-         <button onClick={() => onClose(id)}>X</button>
-         <Link to={`/detail/${id}`}>
-                  <h2>{name}</h2>
-               </Link>
-         {/* <h2> {species}</h2>
-         <h2> {gender}</h2>
-         <h2> {origin}</h2>
-         <h2> {status}</h2> */}
-         {/* <img src={image} alt={name} /> */}
-
 
          <div class="ContainerCard">
             <div class="card">
                <div class="imgStore">
                   <img src={image} alt={name} />
                   <div class="contentcard">
-                     <div class="container-action">
+                  <div class="container-action">
+    {showActions && (
+        <>
+            <button class="button-action corazon" onClick={handleFavorite}>
+                {isFav ? <i class="bi bi-heart-fill"></i> : <i class="bi bi-heart"></i>}
+            </button>
+            <NavLink to={`/detail/${id}`}>
+                <h2>{name}</h2>
+            </NavLink>
+            <button class="button-action X" onClick={() => onClose(id)}>
+                X
+            </button>
+        </>
+    )}
+    {!showActions && (
+        <NavLink to={`/detail/${id}`}>
+            <h2>{name}</h2>
+        </NavLink>
+    )}
+</div>
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     {/* <div class="container-action">
                         <button class="button-action corazon" onClick={handleFavorite}>{isFav ? <i class="bi bi-heart-fill"></i>:<i class="bi bi-heart"></i>}</button>
                      <NavLink to={`/detail/${id}`}><h2>{name}</h2></NavLink>
                         <button class="button-action X" onClick={() => onClose(id)}>X</button>
 
-                     </div>
+                     </div> */}
 
                   </div>
 
